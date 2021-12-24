@@ -1,0 +1,16 @@
+<div>
+    <h1>International Space Ship Current Location</h1>
+    <p>Time: {{timestamp * 1000 | date: 'yyyy-MM-dd HH:mm:ss':'':'he-IL' }}<br>
+    Longitude: {{longitude}}<br>
+    Latitude: {{latitude}}</p>
+</div>
+<div>
+    <button mat-raised-button color="primary" (click)="onClick()">Click here</button>
+</div>
+<div>
+    <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let item of commentList">
+            Coordinates: {{item.longitude}}, {{item.latitude}} | Comments: {{item.comment}}</mat-list-item>
+    </mat-list>
+
+</div>
