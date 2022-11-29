@@ -10,7 +10,7 @@ import localeHe from '@angular/common/locales/he';
 import { registerLocaleData } from '@angular/common';
 import { NotesDialogComponent } from './components/notes-dialog/notes-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
+import { MatCardModule, MatDialogModule, MatTableModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -33,7 +33,9 @@ registerLocaleData(localeHe);
     FormsModule,
     MatListModule,
     MatInputModule,
-    MatButtonModule   
+    MatButtonModule,
+    MatCardModule,
+    MatTableModule
   ],
   entryComponents: [
     NotesDialogComponent

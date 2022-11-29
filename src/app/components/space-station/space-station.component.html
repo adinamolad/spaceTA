@@ -1,16 +1,35 @@
-<div>
-    <h1>International Space Ship Current Location</h1>
-    <p>Time: {{timestamp * 1000 | date: 'yyyy-MM-dd HH:mm:ss':'':'he-IL' }}<br>
-    Longitude: {{longitude}}<br>
-    Latitude: {{latitude}}</p>
-</div>
-<div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>International Space Ship</mat-card-title>
+    <mat-card-subtitle>Current Location</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Time: {{timestamp * 1000 | date: 'yyyy-MM-dd HH:mm:ss':'':'he-IL' }}<br>
+      Longitude: {{longitude}}<br>
+      Latitude: {{latitude}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
     <button mat-raised-button color="primary" (click)="onClick()">Click here</button>
-</div>
-<div>
-    <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let item of commentList">
-            Coordinates: {{item.longitude}}, {{item.latitude}} | Comments: {{item.comment}}</mat-list-item>
-    </mat-list>
 
-</div>
+  </mat-card-actions>
+</mat-card>
+
+  <table class='table table-striped'  aria-labelledby="tableLabel" *ngIf="commentList.length>0">
+  <thead>
+    <tr>
+      <th>Longitude</th>
+      <th>Latitude</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of commentList">
+      <td>{{ item.longitude }}</td>
+      <td>{{ item.latitude }}</td>
+      <td>{{ item.comment }}</td>
+    </tr>
+  </tbody>
+  </table>
+
