@@ -1,4 +1,5 @@
-<mat-card>
+<div class="main">
+  <mat-card>
   <mat-card-header>
     <mat-card-title>International Space Ship</mat-card-title>
     <mat-card-subtitle>Current Location</mat-card-subtitle>
@@ -6,8 +7,8 @@
   <mat-card-content>
     <p>
       Time: {{timestamp * 1000 | date: 'yyyy-MM-dd HH:mm:ss':'':'he-IL' }}<br>
-      Longitude: {{longitude}}<br>
-      Latitude: {{latitude}}
+      Longitude: {{locationNote.longitude}}<br>
+      Latitude: {{locationNote.latitude}}
     </p>
   </mat-card-content>
   <mat-card-actions>
@@ -16,20 +17,29 @@
   </mat-card-actions>
 </mat-card>
 
-  <table class='table table-striped'  aria-labelledby="tableLabel" *ngIf="commentList.length>0">
-  <thead>
-    <tr>
-      <th>Longitude</th>
-      <th>Latitude</th>
-      <th>Comments</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of commentList">
-      <td>{{ item.longitude }}</td>
-      <td>{{ item.latitude }}</td>
-      <td>{{ item.comment }}</td>
-    </tr>
-  </tbody>
-  </table>
 
+  <table mat-table [dataSource]="commentList" class="mat-elevation-z8 table-striped" *ngIf="commentList.length>0">
+
+  
+    <ng-container matColumnDef="longitude">
+      <th mat-header-cell *matHeaderCellDef> Longitude </th>
+      <td mat-cell *matCellDef="let element"> {{element.latitude}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="latitude">
+      <th mat-header-cell *matHeaderCellDef> Latitude </th>
+      <td mat-cell *matCellDef="let element"> {{element.latitude}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="note">
+      <th mat-header-cell *matHeaderCellDef> Note </th>
+      <td mat-cell *matCellDef="let element"> {{element.note}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+
+
+</div>
